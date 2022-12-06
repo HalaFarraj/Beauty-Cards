@@ -1,0 +1,147 @@
+:root{
+    --grey: #d2d5d9;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#body-container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+   
+}
+
+.header{
+    background-image: linear-gradient(#3c1053, #ad5389);    
+    height: auto;
+    /* width: 100%; */
+    color: white;   
+    font-size: 20px;
+    padding: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: rgb(115, 90, 122) 2px 2px 8px 0px;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.header h3{
+    font-family: 'Brush Script MT';
+    text-shadow: 1px 1px white ;
+    font-size: 70px;
+}
+
+
+.header h5{
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+
+#cards-container{
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    gap: 1%;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 90%;
+    align-self: center; */
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-grow: 1;
+    flex-shrink: 1; */
+    gap: 1.5%;
+    flex-wrap: wrap;
+    padding: 3%;
+    /* width: 90%; */
+    align-self: center;
+    box-sizing: border-box;
+    justify-content: center;
+
+}
+
+.card{
+   
+    flex-basis: 300px;
+    box-sizing: border-box;
+    margin: 1%;
+    border: white solid 1px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    border-radius: 10px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 2px 2px 8px 0px;
+}
+
+.card .text button{
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+
+
+.color{
+    width: 100%;
+    height: 400px;
+    background-color: red;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 1px 2px 3px 2px;
+
+}
+
+button{
+    width: 40px;
+    border-radius: 20px;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+    background-color: var(--grey);
+    cursor: pointer;
+        background-color: rgb(210, 213, 217);
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    box-sizing: border-box;
+    font-weight: 700;
+    /* padding: 8px 18px; */
+    /* user-select: none; */
+
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    outline: 0 solid transparent;
+ 
+}
+
+button:hover{
+    box-shadow: rgba(122, 122, 122, 0.76) 0px 5px 5px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+button.selected{
+    background-color: red;
+}
+
+.text{
+    padding: 20px;
+}
+
+
+.content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    box-shadow: rgba(158, 154, 154, 0.2) 0px 2px 0px 0px;
+}

@@ -1,8 +1,16 @@
 :root{
-    --grey: #d2d5d9;
+    --buttonColor: #d2d5d9;
+    --buttonShadow: rgba(122, 122, 122, 0.76) 0px 5px 5px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    --cardShadow:rgba(99, 99, 99, 0.2) 2px 2px 8px 0px;
+    --colorDivShadow:rgba(99, 99, 99, 0.2) 1px 2px 3px 2px;
+    --headerColor: #FFFFFF;
+    --headerShadow: rgb(115, 90, 122) 2px 2px 8px 0px;
+    --lineShadow:rgba(158, 154, 154, 0.2) 0px 2px 0px 0px;
 }
 
 *{
+    box-sizing: border-box;
+    font-family: 'Brush Script MT';;
     margin: 0;
     padding: 0;
 }
@@ -10,138 +18,149 @@
 #body-container{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-   
+    width: 100%;
 }
 
 .header{
-    background-image: linear-gradient(#3c1053, #ad5389);    
-    height: auto;
-    /* width: 100%; */
-    color: white;   
+    background-image: linear-gradient(#3c1053, #ad5389);
+    box-shadow: var(--headerShadow);
+    color: var(--headerColor);
     font-size: 20px;
+    height: auto;
     padding: 15px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: rgb(115, 90, 122) 2px 2px 8px 0px;
 }
 
 .header-container{
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .header h3{
-    font-family: 'Brush Script MT';
-    text-shadow: 1px 1px white ;
     font-size: 70px;
+    text-shadow: 1px 1px var(--headerColor) ;
 }
 
 
-.header h5{
-    margin-top: 2px;
-    margin-right: 5px;
+.header h4{
+    margin: 2px 5px 0 0;
 }
 
 
 #cards-container{
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-shrink: 1;
-    gap: 1%;
-    flex-wrap: wrap;
-    padding: 10px;
-    width: 90%;
-    align-self: center; */
-
+    align-self: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* flex-grow: 1;
-    flex-shrink: 1; */
-    gap: 1.5%;
-    flex-wrap: wrap;
-    padding: 3%;
-    /* width: 90%; */
-    align-self: center;
-    box-sizing: border-box;
-    justify-content: center;
-
+    gap: 10px;
+    justify-content:center;
+    padding-top: 10px;
 }
 
 .card{
-   
-    flex-basis: 300px;
-    box-sizing: border-box;
-    margin: 1%;
-    border: white solid 1px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-wrap: wrap;
     border-radius: 10px ;
-    box-shadow: rgba(99, 99, 99, 0.2) 2px 2px 8px 0px;
+    border: white solid 1px;
+    box-shadow: var(--cardShadow);
+    display: flex;
+    flex-basis: 315px;
+    flex-direction: column;
+    flex-grow: 2;
+    flex-shrink: 3;
+    margin: 1%;
 }
-
-.card .text button{
-    align-self: flex-end;
-    justify-self: flex-end;
-}
-
-
 
 .color{
-    width: 100%;
-    height: 400px;
-    background-color: red;
     border-radius: 10px 10px 0px 0px;
-    box-shadow: rgba(99, 99, 99, 0.2) 1px 2px 3px 2px;
-
+    box-shadow: var(--colorDivShadow);
+    height: 400px;
+    width: inherit;
 }
 
 button{
-    width: 40px;
-    border-radius: 20px;
-    padding: 7px;
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 10px;
-    background-color: var(--grey);
-    cursor: pointer;
-        background-color: rgb(210, 213, 217);
-    box-shadow: #5e5df0 0 10px 20px -10px;
-    box-sizing: border-box;
-    font-weight: 700;
-    /* padding: 8px 18px; */
-    /* user-select: none; */
-
-    touch-action: manipulation;
-    width: fit-content;
-    word-break: break-word;
+    background-color: var(--buttonColor);
+    border-radius: 10px;
     border: 0;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
     outline: 0 solid transparent;
- 
+    padding: 10px;
+    width: 100%;
+    word-break: break-word;
 }
 
 button:hover{
-    box-shadow: rgba(122, 122, 122, 0.76) 0px 5px 5px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    box-shadow: var(--buttonShadow)
 }
-
-button.selected{
-    background-color: red;
-}
-
 .text{
+    box-shadow: var(--lineShadowColor);
+    font-size: 1em;
+    height: 110px;
     padding: 20px;
 }
 
 
-.content{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    box-shadow: rgba(158, 154, 154, 0.2) 0px 2px 0px 0px;
+.content {
+    margin-top: 10px;
+}
+
+.text-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end ;
+}
+
+.buttonDiv{
+    padding : 15px;
+}
+
+#errorDiv{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        padding: 10%;
+        text-align: center;
+    }
+
+@media only screen and (max-width:1403px){    
+    .card{
+        box-sizing: border-box;
+        flex-basis: 30vw;
+        flex-grow: 0;
+        flex-shrink: 1;
+        justify-content: flex-start;
+    }
+    #cards-container{
+        justify-content: flex-start;
+    }
+     }
+
+@media only screen and (max-width:1024px){    
+    .card{
+        flex-basis: 400px;
+        flex-grow: 2;
+        flex-shrink: 1;
+        justify-content: flex-start;
+    }
+    #cards-container{
+        justify-content: flex-start;
+    }
+     }
+
+@media only screen and (max-width:500px){
+    
+    .card{
+        padding: 10px;
+    }
+    .header h3{
+        font-size: 40px;
+    }
+    .header h4{
+        font-size: 12px;
+    }
 }

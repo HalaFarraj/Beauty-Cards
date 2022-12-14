@@ -58,16 +58,39 @@
     padding-top: 10px;
 }
 
-.card{
+.flip-card{
+    background-color: transparent;
     border-radius: 10px ;
-    border: white solid 1px;
-    box-shadow: var(--cardShadow);
+    border: transparent solid 1px;
     display: flex;
     flex-basis: 315px;
     flex-direction: column;
     flex-grow: 2;
     flex-shrink: 3;
     margin: 1%;
+    perspective: 1000px;
+    position: relative;
+    transition: transform 0.9s;
+}
+
+.card-inner{
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: var(--cardShadow);
+    height: 100%;
+    transform-style:preserve-3d;
+    transition: transform 0.9s;
+    width: 100%;
+}
+
+
+.card{
+    backface-visibility: hidden;
+    border-radius: 10px ;
+    border: white solid 1px;
+    box-shadow: var(--cardShadow);
+    transform-style: preserve-3d;
+    transition: all 1.0s ease;
 }
 
 .color{
@@ -76,6 +99,7 @@
     height: 400px;
     width: inherit;
 }
+
 
 button{
     background-color: var(--buttonColor);
@@ -88,6 +112,7 @@ button{
     margin-top: 10px;
     outline: 0 solid transparent;
     padding: 10px;
+    transition: 0.5s;
     width: 100%;
     word-break: break-word;
 }
@@ -95,7 +120,7 @@ button{
 button:hover{
     box-shadow: var(--buttonShadow)
 }
-.text{
+.flip-card .card-inner .card .text{
     box-shadow: var(--lineShadowColor);
     font-size: 1em;
     height: 110px;
@@ -141,7 +166,7 @@ button:hover{
      }
 
 @media only screen and (max-width:1024px){    
-    .card{
+    .flip-card{
         flex-basis: 400px;
         flex-grow: 2;
         flex-shrink: 1;
@@ -154,13 +179,13 @@ button:hover{
 
 @media only screen and (max-width:500px){
     
-    .card{
+    .flip-card{
         padding: 10px;
     }
     .header h3{
         font-size: 40px;
     }
     .header h4{
-        font-size: 12px;
+        font-size: 15px;
     }
 }

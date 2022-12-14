@@ -231,18 +231,29 @@ class Header {
 
 class Card {
   constructor(color, title, i) {
-    this.card = document.createElement('div');
-    this.card.className = 'card';
-    this.card.id = 'card' + i;
+    this.flipCard = document.createElement('div');
+    this.flipCard.className = 'flip-card';
+    this.flipCard.id = 'flipCard' + i;
+
+    let cardInner = document.createElement('div');
+    cardInner.className = 'card-inner';
+    cardInner.id = 'innerCard' + i;
+    this.flipCard.appendChild(cardInner);
+
+    let card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'card' + i;
+
+    cardInner.appendChild(card);
 
     let cardColorDiv = document.createElement('div');
     cardColorDiv.className = 'color';
     cardColorDiv.style.backgroundColor = color;
-    this.card.appendChild(cardColorDiv);
+    card.appendChild(cardColorDiv);
 
     let cardTextDiv = document.createElement('div');
     cardTextDiv.className = 'text';
-    this.card.appendChild(cardTextDiv);
+    card.appendChild(cardTextDiv);
 
     let cardTitle = document.createElement('h4');
     cardTitle.innerHTML = title;
@@ -254,7 +265,7 @@ class Card {
     cardcontent.appendChild(contentText);
     cardTextDiv.appendChild(cardcontent);
 
-    const id = this.card.id;
+    const id = card.id;
 
     let cardButton = document.createElement('button');
     cardButton.innerText = 'Select';
@@ -265,16 +276,17 @@ class Card {
         selectedCardsMap.delete(id);
         selectedCardsCounter--;
         this.style.backgroundColor = '#d2d5d9';
-        document.getElementById(id).style.transform = 'scale(1,1)';
-        document.getElementById(id).style.boxShadow =
+        document.getElementById(`flipCard${i}`).style.transform =
+          'scale(1,1)';
+        document.getElementById(`flipCard${i}`).style.boxShadow =
           'rgba(99, 99, 99, 0.2) 2px 2px 8px 0px';
       } else {
         selectedCardsMap.set(id, color);
         selectedCardsCounter++;
         cardButton.style.backgroundColor = '#BFD7ED';
-        document.getElementById(id).style.transform =
+        document.getElementById(`flipCard${i}`).style.transform =
           'scale(1.02,1.02)';
-        document.getElementById(id).style.boxShadow =
+        document.getElementById(`flipCard${i}`).style.boxShadow =
           '#BFD7ED 0px 4px 20px';
       }
       numberOfSelectedCards.innerHTML = selectedCardsCounter;
@@ -285,17 +297,17 @@ class Card {
     let buttonDiv = document.createElement('div');
     buttonDiv.className = 'buttonDiv';
     buttonDiv.appendChild(cardButton);
-    this.card.appendChild(buttonDiv);
+    card.appendChild(buttonDiv);
 
     let content = document.createElement('div');
     content.className = 'text-button';
     content.appendChild(cardTextDiv);
     content.appendChild(buttonDiv);
-    this.card.appendChild(content);
+    card.appendChild(content);
   }
 
   get Card() {
-    return this.card;
+    return this.flipCard;
   }
 }
 
@@ -307,11 +319,40 @@ async function createBody() {
 
   for (let i = 0; i < 100; i++) {
     const randomColor = Math.floor(Math.random() * 100);
-    cardsContainer.appendChild(
-      new Card(CSS_COLOR_NAMES[randomColor], titles[i], i).Card
-    );
+    const card = new Card(CSS_COLOR_NAMES[randomColor], titles[i], i);
+    cardsContainer.appendChild(card.Card);
   }
   bodyContainer.appendChild(cardsContainer);
 }
 
 createBody();
+
+function rotateCard(i) {
+  let cardoffsetTop = document.getElementById(
+    `flipCard${i}`
+  ).offsetTop;
+
+  let scrollingHeight = window.pageYOffset;
+  if (cardoffsetTop <= scrollingHeight) {
+    let difference = scrollingHeight - 20 - cardoffsetTop;
+    console.log(difference);
+    if (difference <= 70) {
+      document.getElementById(
+        `innerCard${i}`
+      ).style.transform = `rotateY(${difference}deg)`;
+    } else {
+      document.getElementById(
+        `innerCard${i}`
+      ).style.transform = `rotateY(70deg)`;
+    }
+  } else {
+    document.getElementById(`innerCard${i}`).style.transform =
+      'rotateY(0deg)';
+  }
+}
+
+window.onscroll = function () {
+  for (let i = 0; i < 100; i++) {
+    rotateCard(i);
+  }
+};

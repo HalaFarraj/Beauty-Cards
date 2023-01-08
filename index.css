@@ -50,12 +50,15 @@
 
 #cards-container{
     align-self: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit,minmax(315px,1fr));
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+    padding: 1%;
+    width: inherit;
     gap: 10px;
     justify-content:center;
-    padding-top: 10px;
 }
 
 .flip-card{
@@ -63,10 +66,7 @@
     border-radius: 10px ;
     border: transparent solid 1px;
     display: flex;
-    flex-basis: 315px;
     flex-direction: column;
-    flex-grow: 2;
-    flex-shrink: 3;
     margin: 1%;
     perspective: 1000px;
     position: relative;
@@ -125,9 +125,12 @@ button:hover{
     font-size: 1em;
     height: 110px;
     padding: 20px;
+    text-overflow: ellipsis;
 }
 
-
+.text{
+    
+}
 .content {
     margin-top: 10px;
 }
@@ -152,36 +155,9 @@ button:hover{
         text-align: center;
     }
 
-@media only screen and (max-width:1403px){    
-    .card{
-        box-sizing: border-box;
-        flex-basis: 30vw;
-        flex-grow: 0;
-        flex-shrink: 1;
-        justify-content: flex-start;
-    }
-    #cards-container{
-        justify-content: flex-start;
-    }
-     }
-
-@media only screen and (max-width:1024px){    
-    .flip-card{
-        flex-basis: 400px;
-        flex-grow: 2;
-        flex-shrink: 1;
-        justify-content: flex-start;
-    }
-    #cards-container{
-        justify-content: flex-start;
-    }
-     }
 
 @media only screen and (max-width:500px){
     
-    .flip-card{
-        padding: 10px;
-    }
     .header h3{
         font-size: 40px;
     }
